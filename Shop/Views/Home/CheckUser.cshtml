@@ -1,0 +1,74 @@
+﻿@model Shop.Models.User
+
+
+@using (Html.BeginForm("CheckUser", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="d-flex justify-content-center">
+
+        <div class="bg-transparent p-4 shadow-lg bg-light col-sm-3">
+            <h4 class="text-center">LOGIN</h4>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label", @id="labe", @hidden=true })
+                <div class="">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control shadow-lg", @autocomplete = "off", @Placeholder = "Email", @onclick = "myfunction('labe')" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label", @id = "label2", @hidden = true })
+                <div class="">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control shadow-lg",@placeholder = "Password", @type= "Password", @onclick = "myfunction('label2')" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            @if(ViewBag.Error != null)
+            {
+                <div class="alert-danger border ">
+                    @ViewBag.Error
+                </div>
+            }
+            else if(ViewBag.Success != null)
+            {
+                <div class="alert-success border">
+                    @ViewBag.Success
+                </div>
+            }
+            <br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Login" class="btn btn-outline-primary shadow-lg btn-block" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    ontouchstart: function myfunction(labl) {
+        if (labl == "labe") {
+            document.getElementById("labe").hidden = false;
+        }
+        else {
+            document.getElementById("label2").hidden = false;
+        }
+
+    }
+
+</script>

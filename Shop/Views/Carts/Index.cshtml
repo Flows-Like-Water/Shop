@@ -1,0 +1,76 @@
+﻿@model Shop.Models.Cart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Index", "Items")
+</p>
+@if (ViewBag.Success != null)
+{
+    <div class="alert-success border">
+        @ViewBag.Success
+    </div>
+}
+else if (ViewBag.Error != null)
+{
+    <div class="alert-danger border">
+        @ViewBag.Error
+    </div>
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Items</th>
+        <th>Quantity</th>
+        <th>Price <small>(each)</small></th>
+        <th>Total Price</th>
+        <th></th>
+    </tr>
+
+    @if (Model.Item_Cart.Count != 0)
+    {
+        foreach (var item in Model.Item_Cart)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item.ItemName)
+                    @Html.DisplayFor(modelItem => item.Item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "Delete", new { id = item.ItemID }, htmlAttributes: new { @class = "btn btn-sm btn-outline-danger" })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4" class="text-center">
+                <h4 class="text-danger">There's nothing in your cart. <br />  @Html.ActionLink("Add items..", "Index", "Items", new { }, htmlAttributes: new { @class ="btn btn-outline-info btn-sm"})</h4>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script>
+    function total(price, quantity) {
+        if (price != null && quantity != null) {
+            var total = price * quantity
+            return total;
+        }
+    }
+</script>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Shop.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if(ViewBag.Success != null)
+{
+<div class="alert-success">
+    @ViewBag.Success
+</div>
+}
+else if(ViewBag.Error != null)
+{
+    <div class="alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if (Model.Count() == 0)
+{
+    <p class="alert">There are no Items on sale</p>
+}
+else
+{
+    foreach (var itm in Model)
+    {
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card" id="@itm.ItemID" onmouseover="shadow(@itm.ItemID)" onmouseout="noshadow(@itm.ItemID)">
+                        <div class="card-header text-center h4 font-weight-bold">
+                            @Html.DisplayFor(x => itm.ItemName)
+                        </div>
+                        <img src="" class="card-img-top" alt="Can't load image" />
+                        <div class="card-footer form-inline">
+                            <span>
+                                @Html.ActionLink("Buy", "AddToCart", new { id = itm.ItemID, quantity = 1 }, new { @class = "btn btn-outline-success shadow-lg" })
+                                <input class="form-control small col-sm-3" min="1" placeholder="Qty" name="quantity" type="number" />
+                                <b class="text-monospace float-right">R @Html.DisplayFor(x => itm.Price.Amount)</b>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    }
+}
+
+<script>
+    function shadow(id1) {
+        document.getElementById(id1).className = "shadow-lg";
+    }
+
+    function noshadow(id) {
+        document.getElementById(id).className = "shadow-none";
+
+    }
+</script>
+

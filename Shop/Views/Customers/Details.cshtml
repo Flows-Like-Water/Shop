@@ -1,0 +1,51 @@
+﻿@model Shop.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID })
+    @Html.ActionLink("Delete Profile", "Delete", new { id = Model.CustomerID })
+    @Html.ActionLink("Back to List", "Index")
+</p>

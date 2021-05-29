@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6bc8b863446e4d258c008e29e98758a5" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopModel.AccessLevel" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Cart" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Customer" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Item" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Item_Cart" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Price" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Role" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Sale" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.User" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.VAT" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="ShopModel.FK_Cart_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Item_Cart_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Sales_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Customer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Item_Cart_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Item_Price" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Price_VAT" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.RoleAccess" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
